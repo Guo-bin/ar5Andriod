@@ -12,62 +12,69 @@ import styles from "./index.module.scss";
 const ArPage = () => {
   const [openItem, setOpenItem] = useState("ImageExamplePage");
   const [isBtnShow, setBtnIsShow] = useState(false);
-  const [orientation, setOrientation] = useState(null);
+  const [orientation, setOrientation] = useState(true);
   const [CmaIsOpen, setCmaIsOpen] = useState(false);
+  const [screenSize, setScreenSize] = useState({});
   const windowSize = useWindowSize();
-
+  // const [screenSize, setScreenSize] = useState();
   useEffect(() => {
     const body = document.querySelector("body");
     body.style.overflow = "hidden";
-    if (windowSize.height > windowSize.width) {
-      setOrientation(true);
-    } else {
-      setOrientation(false);
-    }
+    // screen.orientation.addEventListener("change", function (e) {
+    //   body.style.minWidth = "375px";
+    //   body.style.minHeight = "667px";
+    // });
+
+    // if (windowSize.height > windowSize.width) {
+    //   setOrientation(true);
+    // } else {
+    //   setOrientation(false);
+    // }
   }, [windowSize.width]);
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((e) => {
-          setCmaIsOpen(true);
-        })
-        .catch((e) => {
-          setCmaIsOpen(false);
-        });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== undefined) {
+  //     navigator.mediaDevices
+  //       .getUserMedia({ video: true })
+  //       .then((e) => {
+  //         setCmaIsOpen(true);
+  //       })
+  //       .catch((e) => {
+  //         setCmaIsOpen(false);
+  //       });
+  //   }
+  // }, []);
   return (
     <>
-      {!CmaIsOpen && <CameraAuth />}
-      {orientation ? (
-        <div className={styles.arPage}>
-          {openItem !== "ViewGuidePage" &&
-            openItem !== "ViewInstructionPage" && <Title />}
+      {/* {!CmaIsOpen && <CameraAuth />}
+      {orientation ? ( */}
+      <div className={styles.arPage}>
+        {openItem !== "ViewGuidePage" && openItem !== "ViewInstructionPage" && (
+          <Title />
+        )}
 
-          <Nav setOpenItem={setOpenItem} openItem={openItem} />
-          <section>
-            {openItem == "ImageExamplePage" && (
-              <ImageExamplePage
-                setOpenItem={setOpenItem}
-                isBtnShow={isBtnShow}
-                setBtnIsShow={setBtnIsShow}
-              />
-            )}
-            {openItem == "InstructionPage" && (
-              <InstructionPage setOpenItem={setOpenItem} />
-            )}
-            {openItem == "ViewInstructionPage" && (
-              <ViewInstructionPage setOpenItem={setOpenItem} />
-            )}
-            {openItem == "ViewGuidePage" && (
-              <ViewGuidePage setOpenItem={setOpenItem} />
-            )}
-          </section>
-        </div>
-      ) : (
+        <Nav setOpenItem={setOpenItem} openItem={openItem} />
+        <section>
+          {openItem == "ImageExamplePage" && (
+            <ImageExamplePage
+              setOpenItem={setOpenItem}
+              isBtnShow={isBtnShow}
+              setBtnIsShow={setBtnIsShow}
+            />
+          )}
+          {openItem == "InstructionPage" && (
+            <InstructionPage setOpenItem={setOpenItem} />
+          )}
+          {openItem == "ViewInstructionPage" && (
+            <ViewInstructionPage setOpenItem={setOpenItem} />
+          )}
+          {openItem == "ViewGuidePage" && (
+            <ViewGuidePage setOpenItem={setOpenItem} />
+          )}
+        </section>
+      </div>
+      {/* ) : (
         <Orientation />
-      )}
+      )} */}
     </>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import useWindowSize from "utils/windowSize";
 import "mind-ar/dist/mindar-image.prod.js";
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod.js";
@@ -6,6 +7,12 @@ import "aframe-extras";
 import styles from "./index.module.scss";
 const Ar = ({ targetUrl, model }) => {
   const sceneRef = useRef(null);
+  const [orientation, setOrientation] = useState();
+  const windowSize = useWindowSize();
+  useEffect(() => {
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
+  }, [windowSize.width]);
 
   useEffect(() => {
     console.log(targetUrl);
