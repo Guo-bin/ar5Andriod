@@ -29,20 +29,18 @@ const ArPage = () => {
   useEffect(() => {
     if (typeof window !== undefined) {
       navigator.mediaDevices
-        .getUserMedia({ video: { facingMode: "environment" } })
+        .getUserMedia({ video: true })
         .then((e) => {
           setCmaIsOpen(true);
-          alert("success");
         })
         .catch((e) => {
           setCmaIsOpen(false);
-          alert("fail");
         });
     }
   }, []);
   return (
     <>
-      {/* {!CmaIsOpen && <CameraAuth />} */}
+      {!CmaIsOpen && <CameraAuth />}
       {orientation ? (
         <div className={styles.arPage}>
           {openItem !== "ViewGuidePage" &&
