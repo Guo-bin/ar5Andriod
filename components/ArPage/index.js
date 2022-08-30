@@ -40,7 +40,7 @@ const ArPage = () => {
   }, []);
   return (
     <>
-      {!CmaIsOpen && <CameraAuth />}
+      {/* {!CmaIsOpen && <CameraAuth />} */}
       {orientation ? (
         <div className={styles.arPage}>
           {openItem !== "ViewGuidePage" &&
