@@ -6,6 +6,7 @@ import "mind-ar/dist/mindar-image-aframe.prod.js";
 import "aframe-extras";
 import styles from "./index.module.scss";
 const Ar = ({ targetUrl, model }) => {
+  const [CmaIsOpen, setCmaIsOpen] = useState(false);
   const sceneRef = useRef(null);
   const [orientation, setOrientation] = useState();
   const windowSize = useWindowSize();
@@ -21,9 +22,23 @@ const Ar = ({ targetUrl, model }) => {
     sceneEl.addEventListener("renderstart", () => {
       arSystem.start(); // start AR
     });
-
+    // navigator.mediaDevices
+    //   .getUserMedia({ video: true })
+    //   .then((e) => {
+    //     setCmaIsOpen(true);
+    //     // alert("success");
+    //   })
+    //   .catch((e) => {
+    //     setCmaIsOpen(false);
+    //     // alert("fail");
+    //   });
     return () => {
-      arSystem.stop();
+      if (sceneEl) {
+        const arSystem = sceneEl.systems["mindar-image-system"];
+        sceneEl.addEventListener("renderstart", () => {
+          arSystem.stop(); // stop AR
+        });
+      }
     };
   }, []);
 
