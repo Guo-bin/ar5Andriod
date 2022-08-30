@@ -6,6 +6,7 @@ const Test = () => {
       navigator.mediaDevices
         .getUserMedia({ video: true })
         .then((e) => {
+          document.querySelector();
           alert("success");
         })
         .catch((e) => {
@@ -13,7 +14,7 @@ const Test = () => {
         });
     }
   }, []);
-  return <div>index</div>;
+  return <video width={1200} height={1200} />;
 };
 
 export default Test;

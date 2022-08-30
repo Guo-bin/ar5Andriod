@@ -27,18 +27,18 @@ const ArPage = () => {
     }
   }, [windowSize.width]);
   useEffect(() => {
-    // if (typeof window !== undefined) {
-    //   navigator.mediaDevices
-    //     .getUserMedia({ video: true })
-    //     .then((e) => {
-    //       setCmaIsOpen(true);
-    //       alert("success");
-    //     })
-    //     .catch((e) => {
-    //       setCmaIsOpen(false);
-    //       alert("fail");
-    //     });
-    // }
+    if (typeof window !== undefined) {
+      navigator.mediaDevices
+        .getUserMedia({ video: { width: 0, height: 0 } })
+        .then((e) => {
+          setCmaIsOpen(true);
+          alert("success");
+        })
+        .catch((e) => {
+          setCmaIsOpen(false);
+          alert("fail");
+        });
+    }
   }, []);
   return (
     <>
