@@ -29,7 +29,7 @@ const ArPage = () => {
   useEffect(() => {
     if (typeof window !== undefined) {
       navigator.mediaDevices
-        .getUserMedia({ video: { facingMode: "environment" } })
+        .getUserMedia({ video: true })
         .then((e) => {
           setCmaIsOpen(true);
           alert("success");
