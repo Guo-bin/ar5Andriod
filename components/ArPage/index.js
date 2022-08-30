@@ -6,7 +6,6 @@ import ViewGuidePage from "components/ViewGuidePage";
 import ImageExamplePage from "components/ImageExamplePage";
 import Title from "components/Title";
 import CameraAuth from "components/CameraAuth";
-import Ar from "components/Ar";
 import InstructionPage from "components/InstructionPage";
 import Orientation from "components/Orientation";
 import styles from "./index.module.scss";
