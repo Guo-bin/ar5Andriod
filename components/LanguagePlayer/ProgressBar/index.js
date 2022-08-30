@@ -15,10 +15,9 @@ export default function Bar(props) {
   }
 
   function calcClickedTime(e) {
-    e.preventDefault();
     const clickPositionInPage = e.pageX;
     const bar = document.getElementById("bar_progress");
-    bar.setPointerCapture(e.pointerId);
+    // bar.setPointerCapture(e.pointerId);
     const barStart = bar.getBoundingClientRect().left;
     const barWidth = bar.offsetWidth;
     const clickPositionInBar = clickPositionInPage - barStart;
