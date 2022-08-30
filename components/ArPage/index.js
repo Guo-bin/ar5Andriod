@@ -27,16 +27,18 @@ const ArPage = () => {
     }
   }, [windowSize.width]);
   useEffect(() => {
-    // if (typeof window !== undefined) {
-    //   navigator.mediaDevices
-    //     .getUserMedia({ video: true })
-    //     .then((e) => {
-    //       setCmaIsOpen(true);
-    //     })
-    //     .catch((e) => {
-    //       setCmaIsOpen(false);
-    //     });
-    // }
+    if (typeof window !== undefined) {
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((e) => {
+          setCmaIsOpen(true);
+          alert("success");
+        })
+        .catch((e) => {
+          setCmaIsOpen(false);
+          alert("fail");
+        });
+    }
   }, []);
   return (
     <>
