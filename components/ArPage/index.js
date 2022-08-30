@@ -31,18 +31,18 @@ const ArPage = () => {
     //   setOrientation(false);
     // }
   }, [windowSize.width]);
-  // useEffect(() => {
-  //   if (typeof window !== undefined) {
-  //     navigator.mediaDevices
-  //       .getUserMedia({ video: true })
-  //       .then((e) => {
-  //         setCmaIsOpen(true);
-  //       })
-  //       .catch((e) => {
-  //         setCmaIsOpen(false);
-  //       });
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((e) => {
+          setCmaIsOpen(true);
+        })
+        .catch((e) => {
+          setCmaIsOpen(false);
+        });
+    }
+  }, []);
   return (
     <>
       {/* {!CmaIsOpen && <CameraAuth />}
