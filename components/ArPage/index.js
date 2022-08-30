@@ -29,7 +29,7 @@ const ArPage = () => {
   useEffect(() => {
     if (typeof window !== undefined) {
       navigator.mediaDevices
-        .getUserMedia({ video: true })
+        .getUserMedia({ video: { width: "100vw", height: "100vh" } })
         .then((e) => {
           setCmaIsOpen(true);
           alert("success");
